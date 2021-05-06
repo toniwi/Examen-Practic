@@ -1,5 +1,5 @@
 ---
-- name: Playbook
+- name: Playbook Examen
   hosts: webservers
   become: yes
   tasks:
@@ -9,21 +9,15 @@
       state: present
   - name: Crear usuario
     user:
-      name: admin
+      name: "{{usr}}"
       group: user
       password: '123'
-      home: /users/admin
-  - name: Crear usuario2
-    user:
-      name: dev
-      group: user
-      password: '123'
-      home: /users/dev
+      home: /users/"{{env}}"
   - name: Activar Include
     include: include.yml
 
   roles:
     - update
     - upgrade
-    
+
 ...
