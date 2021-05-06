@@ -1,0 +1,8 @@
+---
+- name: Copiar
+  copy:
+    src: /home/vagrant/EXAMEN/{{ env }}.txt
+    dest: /temp
+    owner: admin
+    group: user
+...

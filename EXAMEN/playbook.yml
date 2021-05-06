@@ -1,0 +1,29 @@
+---
+- name: Playbook
+  hosts: webservers
+  become: yes
+  tasks:
+  - name: Crear grupo
+    group:
+      name: user
+      state: present
+  - name: Crear usuario
+    user:
+      name: admin
+      group: user
+      password: '123'
+      home: /users/admin
+  - name: Crear usuario2
+    user:
+      name: dev
+      group: user
+      password: '123'
+      home: /users/dev
+  - name: Activar Include
+    include: include.yml
+
+  roles:
+    - update
+    - upgrade
+    
+...
